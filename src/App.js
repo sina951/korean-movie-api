@@ -8,6 +8,8 @@ import Row from "./components/Row";
 // THE 2 HOOKS WE USE ARE THE FOLLOWING
 // useState allows us to use state within our functional components [items] which is our data from API and [setState] to change items. We name it setItems in our case
 // useEffect we use to fire of when components load to make an http request to get the data /img /name /movies etc. A snippet of code that runs based on a specific condition/variable, this is where we use useEffect
+// fetchUrl pulls information from requestApi.js, it send info via props to our row.component, which renders it.
+// When this is true = our row will display a poster instead of thumbnail - poster is bigger :) isLargeRow is a name we just made up be create wiht it!
 const App = () => {
   return (
     <div className="app-container">
@@ -15,8 +17,8 @@ const App = () => {
       <Banner />
       <Row
         title="KOREA MOST POPULAR"
-        fetchUrl={requests.fetchKoreanPopular} // fetchUrl pulls information from requestApi.js, it send info via props to our row.component, which renders it.
-        isLargeRow={true} // When this is true = our row will display a poster instead of thumbnail - poster is bigger :) isLargeRow is a name we just made up be create wiht it!
+        fetchUrl={requests.fetchKoreanPopular}
+        isLargeRow={true} 
       />
       
       <Row title="Top Rated" fetchUrl={requests.fetchKoreanTopRated} />
