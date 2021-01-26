@@ -7,6 +7,8 @@ import axios from "./axios"; // axios is the renamed component, instance (when y
 // RFCE or RAFCE
 // Base url makes it work cuz the end url for poster_path is looks like /lk24314r2f.jpg.  {`${base_url}${movie.poster_path}`} . Now movie pictures will show!
 // if trailer is already open (because you clicked the picture) then close it with setting state to ("")
+// { toolTip && <div className="row-banner-content">  Here we set it do empty string on click, and if movie is available on click show the div and populate the data :)
+
 
 const base_url = "https://image.tmdb.org/t/p/original/";
 const movie_url = "https://www.themoviedb.org/movie/";
@@ -46,13 +48,13 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
     if (trailerUrl) {
       setTrailerUrl("");
     } else {
-     
       movieTrailer(movie?.name || "")
         .then((url) => {
           const urlParams = new URLSearchParams(new URL(url).search);
           setTrailerUrl(urlParams.get("v"));
-        })
-        .catch((error) => console.log(error));
+        }).catch(
+          (error) => console.log(error)
+        );
     }
   };
 
@@ -81,18 +83,19 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
         style={{
           backgroundSize: "cover",
           backgroundImage: `url(
-           "https://image.tmdb.org/t/p/original/${toolTip?.backdrop_path}"
-         )`,
+          "https://image.tmdb.org/t/p/original/${toolTip?.backdrop_path}"
+        )`,
           backgroundPosition: "center center",
         }}
       >
-        <div className="row-banner-content">
+
+      { toolTip && <div className="row-banner-content">
           <a className="row_banner_title" href={`${movie_url}${toolTip.id}`}>
             {toolTip?.title || toolTip?.name || toolTip?.original_name}
           </a>
           <p className="row_date">{toolTip.release_date}</p>
           <h1 className="row_description">{toolTip.overview}</h1>
-        </div>
+        </div> }
       </div>
       
       {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
