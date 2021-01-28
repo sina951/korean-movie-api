@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react"
 import { Link } from "react-router-dom"  // useHistory takes us back to dashboard after login
 import { useAuth } from "../contexts/AuthContext"
-import Nav from "./Nav"
 // import { Link, useHistory } from "react-router-dom"
 // useRef() refs are just an object for storing a value that persists between renders, ref is always an object with a single .current property which is set to the current value of the ref. Refs in React are incredibly useful for accessing and manipulating DOM elements directly.
 export default function ForgotPassword() {
@@ -28,7 +27,6 @@ export default function ForgotPassword() {
 
     return (
         <section className="contact-page">
-            <Nav />
         <article>
             <div className="card-body">
                 <h3>Reset Password</h3>
@@ -45,7 +43,8 @@ export default function ForgotPassword() {
             </div>
             <div className="form-option">
                 Need an account? <Link to="/signup" style={{textDecoration: 'none', color: 'cyan'}}>Sign Up </Link>
-                || <Link to="/login" style={{textDecoration: 'none', color: 'cyan'}}>Login</Link>
+                || <Link to="/login" style={{textDecoration: 'none', color: 'cyan'}}>Login </Link>
+                || <Link to="/" style={{textDecoration: 'none', color: 'cyan'}}> Home</Link>
             </div>
         </article>
         </section>

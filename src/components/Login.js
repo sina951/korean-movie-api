@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react"
 import { Link, useHistory } from "react-router-dom"  // useHistory takes us back to dashboard after login
 import { useAuth } from "../contexts/AuthContext"
-import Nav from "./Nav"
+
 // import { Link, useHistory } from "react-router-dom"
 // useRef() refs are just an object for storing a value that persists between renders, ref is always an object with a single .current property which is set to the current value of the ref. Refs in React are incredibly useful for accessing and manipulating DOM elements directly.
 export default function Login() {
@@ -28,9 +28,10 @@ export default function Login() {
         setLoading(false)       // setLoading back to false only after try/catch is succesfull = now the user can try click on signup button again
     }
 
+    // disabled={loading} = when state is set to loading we wont be able to click on button and resubmit! avoiding spam
+
     return (
         <section className="contact-page">
-            <Nav />
         <article>
             <div className="card-body">
                 <h3>Log In</h3>
@@ -40,7 +41,6 @@ export default function Login() {
                         <input type="email" name="email" placeholder="email" className="form-control" ref={emailRef} required></input>
                         <input type="password" name="password" placeholder="password" className="form-control" ref={passwordRef} required></input>
                     </div>
-                    {/* disabled={loading} = when state is set to loading we wont be able to click on button and resubmit! avoiding spam */}
                     <button disabled={loading} type="submit" className="submit-btn btn">
                         Submit
                     </button>
@@ -48,7 +48,8 @@ export default function Login() {
             </div>
             <div className="form-option">
                 Need an account? <Link to="/signup" style={{textDecoration: 'none', color: 'cyan'}}>Sign Up </Link>
-                || <Link to="/forgot-password" style={{textDecoration: 'none', color: 'cyan'}}>Forgot Password?</Link>
+                || <Link to="/forgot-password" style={{textDecoration: 'none', color: 'cyan'}}>Forgot Password? </Link>
+                || <Link to="/" style={{textDecoration: 'none', color: 'cyan'}}>Home</Link>
             </div>
         </article>
         </section>

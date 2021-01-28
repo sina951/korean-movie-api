@@ -11,5 +11,6 @@ const app = firebase.initializeApp({
   appId: process.env.REACT_APP_FIREBASE_APP_ID
 })
 
-export const auth = app.auth()  // gives us our authantication instance, this will be used in AuthContext.js
+// gives us our authantication instance, this will be used in AuthContext.js
+export const auth = app.auth()
 export default app

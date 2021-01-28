@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
-import Nav from "./Nav"
 
 // Log in(changes to Logout), Sign up button beside it  -- This is the Dashboard.js from the course originally
 
@@ -25,7 +24,6 @@ export default function Logout() {
 
     return (
         <section className="contact-page">
-            <Nav />
         <article className="card">
             <div className="card-body">
                 <h3>Profile</h3>
@@ -38,7 +36,9 @@ export default function Logout() {
                     </button>
             </div>
             <div className="form-option">
-                <Link onClick={handleLogout} style={{textDecoration: 'none', color: 'cyan'}}>Log out</Link>
+                <Link to="" onClick={handleLogout} style={{textDecoration: 'none', color: 'cyan'}}>Log out </Link>
+                ||
+                <Link to="/" style={{textDecoration: 'none', color: 'cyan'}}> Home</Link>
             </div>
         </article>
         </section>

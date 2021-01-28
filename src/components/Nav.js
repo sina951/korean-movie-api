@@ -28,7 +28,7 @@ const Nav = () => {
         } else handleShow(true);
       });
     };
-  });
+  }, []);
 
   // user not logged in ? generate this button : otherwise generate this button
 
@@ -36,7 +36,7 @@ const Nav = () => {
     <div className={`nav ${show && "nav-black"}`}>
       <Link to="/"><img className="nav-logo" src={logo2} alt="logo"/></Link>
       <div className="nav-button-group">
-        {/* user not logged in ? generate this button : otherwise generate this button */}
+        
         { !currentUser ? <button className="nav-button"><Link to="/login" style={{ textDecoration: 'none', color: 'inherit' }} >Log In</Link></button> : <button className="nav-button"><Link to="/logout" style={{ textDecoration: 'none', color: 'inherit' }} >Log Out</Link></button> }
         <button className="nav-button"><Link to="/signup" style={{ textDecoration: 'none', color: 'inherit' }} >Sign Up</Link></button>
       </div>

@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react"
 import { Link, useHistory } from "react-router-dom"  // useHistory takes us back to dashboard after login
 import { useAuth } from "../contexts/AuthContext"
-import Nav from "./Nav"
 
 // useRef() refs are just an object for storing a value that persists between renders, ref is always an object with a single .current property which is set to the current value of the ref. Refs in React are incredibly useful for accessing and manipulating DOM elements directly.
 export default function Signup() {
@@ -34,9 +33,12 @@ export default function Signup() {
         setLoading(false)       // setLoading back to false only after try/catch is succesfull = now the user can try click on signup button again
     }
 
+    // disabled={loading} = when state is set to loading we wont be able to click on button and resubmit! avoiding spam
+
+    
     return (
         <section className="contact-page">
-            <Nav />
+
         <article className="card">
             <div className="card-body">
                 <h3>Sign Up</h3>
@@ -48,14 +50,15 @@ export default function Signup() {
                         <input type="password"  placeholder="password" className="form-control" autoComplete="on" id="password" ref={passwordRef} required></input>
                         <input type="password" placeholder="Password Confirmation" className="form-control" autoComplete="on" id="password-confirm" ref={passwordConfirmRef} required></input>
                     </div>
-                    {/* disabled={loading} = when state is set to loading we wont be able to click on button and resubmit! avoiding spam */}
+                    
                     <button disabled={loading} type="submit" className="submit-btn btn">
                         Submit
                     </button>
                 </form>
             </div>
             <div className="form-option">
-                Already have an account? <Link to="/login" style={{textDecoration: 'none', color: 'cyan'}}>Log In</Link>
+                Already have an account? <Link to="/login" style={{textDecoration: 'none', color: 'cyan'}}>Log In </Link>
+                || <Link to="/" style={{textDecoration: 'none', color: 'cyan'}}>Home</Link>
             </div>
         </article>
         </section>

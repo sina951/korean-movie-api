@@ -9,12 +9,13 @@ import { useAuth } from '../contexts/AuthContext'
 export default function PrivateRoute({ component: Component, ...rest }) {
     const {currentUser} = useAuth()  // get current user from firebase data
 
+    
+    // PrivateRoute wraps the current Route here! 
+    // important to pass all the ...rest of the props, as they would normally be passed to Route in App.js
+    // next we create our own render, first it checks if there is a currentUser logged in, if there is a currentUser we want to render our PrivateRoute with a the Components!
+    // however, if no currentUser is available we want to redirect user to the login page!
+    // The logic is:  true ? if true render me : if not true render me instead!
     return (
-        // PrivateRoute wraps the current Route here! 
-        // important to pass all the ...rest of the props, as they would normally be passed to Route in App.js
-        // next we create our own render, first it checks if there is a currentUser logged in, if there is a currentUser we want to render our PrivateRoute with a the Components!
-        // however, if no currentUser is available we want to redirect user to the login page!
-        // The logic is:  true ? if true render me : if not true render me instead!
         <Route
             {...rest}
             render = { props => {

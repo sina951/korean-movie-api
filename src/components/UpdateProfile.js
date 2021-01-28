@@ -46,6 +46,9 @@ export default function UpdateProfile() {
         })
     }
 
+    // disabled={loading} = when state is set to loading we wont be able to click on button and resubmit! avoiding spam
+
+
     return (
         <section className="contact-page">
             <Nav />
@@ -60,7 +63,7 @@ export default function UpdateProfile() {
                         <input type="password"  placeholder="New password - Leave blank to keep the same" className="form-control" autoComplete="on" id="password" ref={passwordRef}></input>
                         <input type="password" placeholder="Confirm new password" className="form-control" autoComplete="on" id="password-confirm" ref={passwordConfirmRef}></input>
                     </div>
-                    {/* disabled={loading} = when state is set to loading we wont be able to click on button and resubmit! avoiding spam */}
+                    
                     <button disabled={loading} type="submit" className="submit-btn btn">
                         Submit Update
                     </button>
